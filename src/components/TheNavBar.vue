@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive, computed, ComputedRef } from "vue";
 import { useUserStore } from "@/stores/userStore";
 
 const user = useUserStore();
@@ -12,13 +12,21 @@ interface Link {
   title: string;
 }
 
-const links: Link[] = reactive([
-  { id: 1, path: { name: "home" }, title: "Home" },
-  { id: 2, path: { name: "signup" }, title: "Signup" },
-  { id: 3, path: { name: "signin" }, title: "Signin" },
+const loginLinks: Link[] = reactive([
   { id: 4, path: { name: "community" }, title: "Community" },
   { id: 5, path: { name: "dashboard" }, title: "Dashboard" },
 ]);
+
+const defaultLinks: Link[] = reactive([
+  { id: 1, path: { name: "home" }, title: "Home" },
+  { id: 2, path: { name: "signup" }, title: "Signup" },
+  { id: 3, path: { name: "signin" }, title: "Signin" },
+]);
+
+const links: ComputedRef<Link[]> = computed(() => {
+  if (user.isSet) return [...defaultLinks, ...loginLinks];
+  else return defaultLinks;
+});
 </script>
 
 <template>
