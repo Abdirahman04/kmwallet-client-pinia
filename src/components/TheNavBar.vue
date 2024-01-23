@@ -34,7 +34,7 @@ const links: ComputedRef<Link[]> = computed(() => {
     <nav class="bg-gray-800 p-4">
       <div class="container mx-auto flex items-center justify-between">
         <div class="text-white text-lg font-bold font-mono">KMWALLET</div>
-        <div class="space-x-4">
+        <div class="space-x-10">
           <router-link
             v-for="link in links"
             :key="link.id"
