@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { reactive } from "vue";
+import { useUserStore } from "@/stores/userStore";
+
+const user = useUserStore();
 
 interface Link {
   id: number;
