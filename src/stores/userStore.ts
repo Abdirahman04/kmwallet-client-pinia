@@ -37,6 +37,11 @@ export const useUserStore = defineStore("user", () => {
   const isSet = ref<boolean>(false);
 
   const fullName = computed(() => `${firstName.value} ${lastName.value}`);
+  const amount = (balance: number) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(balance);
 
   function setUserStore(user: User) {
     customerId.value = user.customerId;
@@ -78,6 +83,8 @@ export const useUserStore = defineStore("user", () => {
     email.value = "";
     phoneNumber.value = "";
     password.value = "";
+    accounts.value = [];
+    transactions.value = [];
     isSet.value = false;
   }
 
@@ -97,5 +104,6 @@ export const useUserStore = defineStore("user", () => {
     deleteAccount,
     getTransactions,
     addTransaction,
+    amount,
   };
 });
