@@ -17,5 +17,6 @@ const updateModelValue = (event: Event) => {
     :value="props.modelValue"
     @input="updateModelValue($event)"
     v-bind="$attrs"
+    class="border-2"
   />
 </template>
