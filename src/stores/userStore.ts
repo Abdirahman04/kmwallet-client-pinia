@@ -5,7 +5,7 @@ interface Transaction {
   transactionId: string;
   accountId: string;
   transactionType: string;
-  targetAccount: string;
+  targetAccount: string | null;
   balance: number;
 }
 interface Account {
