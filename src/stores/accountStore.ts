@@ -1,20 +1,6 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
-
-interface Transaction {
-  transactionId: string;
-  accountId: string;
-  transactionType: string;
-  targetAccount: string | null;
-  balance: number;
-}
-interface Account {
-  accountId: string;
-  customerId: string;
-  accountType: string;
-  balance: number;
-  transactions: Array<Transaction>;
-}
+import { Account, Transaction } from "@/types/interfaces";
 
 export const useAccountStore = defineStore("account", () => {
   const accountId = ref<string>("");

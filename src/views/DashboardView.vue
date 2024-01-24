@@ -8,7 +8,7 @@
         v-for="account in userStore.accounts"
         :key="account.accountId"
         class="rounded-md shadow-md w-1/2 mt-3 px-4 py-2 bg-white"
-        @click="goToAccount"
+        @click="goToAccount(account)"
       >
         <h2 class="text-lime-900">{{ account.accountId }}</h2>
         <h3>{{ account.accountType }}</h3>
@@ -22,12 +22,16 @@
 import TheNavBar from "@/components/TheNavBar.vue";
 import TheSubNav from "@/components/TheSubNav.vue";
 import { useUserStore } from "@/stores/userStore";
+import { useAccountStore } from "@/stores/accountStore";
 import { useRouter } from "vue-router";
+import { Account } from "@/types/interfaces";
 
 const userStore = useUserStore();
+const accountStore = useAccountStore();
 const router = useRouter();
 
-function goToAccount() {
+function goToAccount(account: Account) {
+  accountStore.setAccountStore(account);
   router.push({ name: "account" });
 }
 </script>
