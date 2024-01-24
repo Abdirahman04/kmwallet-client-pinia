@@ -8,15 +8,19 @@ const props = defineProps(["modelValue"]);
 const emits = defineEmits(["update:modelValue"]);
 const pass = ref<string>("");
 const visible = ref<boolean>(false);
-const passClass = () => {
+const passClass = computed(() => {
   if (visible.value) return "text";
-  return "password";
-};
+  else return "password";
+});
 
 const updateModelValue = (event: Event) => {
   const value = (event.target as HTMLInputElement).value;
   emits("update:modelValue", value);
 };
+
+function toggleVisibility() {
+  visible.value = !visible.value;
+}
 </script>
 
 <template>
@@ -27,5 +31,5 @@ const updateModelValue = (event: Event) => {
     v-bind="$attrs"
     :type="passClass"
   ></form-input>
-  <button @click="visible = !visible">See</button>
+  <button @click="toggleVisibility">See</button>
 </template>
