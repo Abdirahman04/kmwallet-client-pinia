@@ -3,11 +3,11 @@
     <the-nav-bar></the-nav-bar>
     <div class="flex flex-grow flex-col bg-gray-200">
       <the-sub-nav path="home" text="Dashboard"></the-sub-nav>
-      <h2 class="text-2xl">{{ userStore.fullName }}</h2>
+      <h2 class="text-2xl">Welcome, {{ userStore.fullName }}</h2>
       <div
         v-for="account in userStore.accounts"
         :key="account.accountId"
-        class="rounded-md shadow-md w-1/2 mt-3 px-4 py-2 bg-white"
+        class="rounded-md shadow-md w-1/2 mt-3 px-4 py-2 bg-white transition-transform duration-300 transform hover:translate-x-3"
         @click="goToAccount(account)"
       >
         <h2 class="text-lime-900">{{ account.accountId }}</h2>

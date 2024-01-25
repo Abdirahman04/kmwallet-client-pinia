@@ -5,6 +5,9 @@ import SignInViewVue from "@/views/SignInView.vue";
 import CommunityViewVue from "@/views/CommunityView.vue";
 import DashboardViewVue from "@/views/DashboardView.vue";
 import AccountsViewVue from "@/views/AccountsView.vue";
+import DepositViewVue from "@/views/DepositView.vue";
+import WithdrawViewVue from "@/views/WithdrawView.vue";
+import TransferViewVue from "@/views/TransferView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   { path: "/", name: "home", component: HomeView },
@@ -13,6 +16,9 @@ const routes: Array<RouteRecordRaw> = [
   { path: "/community", name: "community", component: CommunityViewVue },
   { path: "/dashboard", name: "dashboard", component: DashboardViewVue },
   { path: "/account", name: "account", component: AccountsViewVue },
+  { path: "/deposit", name: "deposit", component: DepositViewVue },
+  { path: "/withdraw", name: "withdraw", component: WithdrawViewVue },
+  { path: "/transfer", name: "transfer", component: TransferViewVue },
 ];
 
 const router = createRouter({

@@ -10,6 +10,9 @@
         <h1>{{ accountStore.accountId }}</h1>
         <h2>{{ accountStore.accountType }}</h2>
         <h2>{{ accountStore.amount }}</h2>
+        <button @click="goTo('deposit')">Deposit</button>
+        <button @click="goTo('withdraw')">Withdraw</button>
+        <button @click="goTo('transfer')">Transfer</button>
       </div>
     </div>
   </div>
@@ -19,6 +22,12 @@
 import TheNavBar from "@/components/TheNavBar.vue";
 import TheSubNav from "@/components/TheSubNav.vue";
 import { useAccountStore } from "@/stores/accountStore";
+import { useRouter } from "vue-router";
 
 const accountStore = useAccountStore();
+const router = useRouter();
+
+function goTo(path: string) {
+  router.push({ name: path });
+}
 </script>

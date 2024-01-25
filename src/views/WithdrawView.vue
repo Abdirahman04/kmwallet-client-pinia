@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col h-screen">
     <the-nav-bar></the-nav-bar>
-    <div class="flex flex-grow flex-col bg-amber-100">
+    <div class="flex flex-grow flex-col bg-red-100">
       <the-sub-nav path="account" text="Withdraw"></the-sub-nav>
       <div class="flex flex-grow justify-center items-center">
         <div>
@@ -15,6 +15,8 @@
 
 <script setup lang="ts">
 import FormInput from "@/components/FormInput.vue";
+import TheNavBar from "@/components/TheNavBar.vue";
+import TheSubNav from "@/components/TheSubNav.vue";
 import { ref } from "vue";
 
 const balance = ref<string>("");
