@@ -39,6 +39,11 @@ export const useAccountStore = defineStore("account", () => {
     transactions.value.push(transaction);
   }
 
+  function transaction(sign: string, value: number) {
+    if (sign == "plus") balance.value = Number(balance.value) + Number(value);
+    else balance.value -= value;
+  }
+
   return {
     accountId,
     customerId,
@@ -50,5 +55,6 @@ export const useAccountStore = defineStore("account", () => {
     setAccountStore,
     deleteAccountStore,
     addTransaction,
+    transaction,
   };
 });

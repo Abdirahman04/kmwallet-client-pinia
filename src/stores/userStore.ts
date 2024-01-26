@@ -65,6 +65,16 @@ export const useUserStore = defineStore("user", () => {
     isSet.value = false;
   }
 
+  function changeBalance(accountId: string, change: number, type: string) {
+    for (const account of accounts.value) {
+      if (account.accountId == accountId) {
+        if (type == "sum")
+          account.balance = Number(account.balance) + Number(change);
+        else account.balance -= change;
+      }
+    }
+  }
+
   return {
     customerId,
     firstName,
@@ -82,5 +92,6 @@ export const useUserStore = defineStore("user", () => {
     getTransactions,
     addTransaction,
     amount,
+    changeBalance,
   };
 });
