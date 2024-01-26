@@ -70,7 +70,7 @@ export const useUserStore = defineStore("user", () => {
       if (account.accountId == accountId) {
         if (type == "sum")
           account.balance = Number(account.balance) + Number(change);
-        else account.balance -= change;
+        else account.balance -= Number(change);
       }
     }
   }

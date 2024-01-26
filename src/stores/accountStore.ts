@@ -41,7 +41,7 @@ export const useAccountStore = defineStore("account", () => {
 
   function transaction(sign: string, value: number) {
     if (sign == "plus") balance.value = Number(balance.value) + Number(value);
-    else balance.value -= value;
+    else balance.value -= Number(value);
   }
 
   return {
