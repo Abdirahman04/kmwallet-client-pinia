@@ -21,3 +21,26 @@ export interface User {
   password: string;
   accounts: Array<Account>;
 }
+
+export interface RegistrationForm {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  password: string;
+}
+
+export interface Validation {
+  fname1: boolean;
+  fname2: boolean;
+  lname1: boolean;
+  lname2: boolean;
+  email1: boolean;
+  email2: boolean;
+  phone1: boolean;
+  phone2: boolean;
+  pass1: boolean;
+  pass2: boolean;
+  cpass1: boolean;
+  cpass2: boolean;
+}

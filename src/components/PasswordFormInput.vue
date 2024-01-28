@@ -12,6 +12,10 @@ const passClass = computed(() => {
   if (visible.value) return "text";
   else return "password";
 });
+const eyeClass = computed(() => {
+  if (visible.value) return "fa-eye";
+  else return "fa-eye-slash";
+});
 
 const updateModelValue = (event: Event) => {
   const value = (event.target as HTMLInputElement).value;
@@ -31,5 +35,7 @@ function toggleVisibility() {
     v-bind="$attrs"
     :type="passClass"
   ></form-input>
-  <button @click="toggleVisibility">See</button>
+  <button @click="toggleVisibility">
+    <i class="fa-solid" :class="eyeClass"></i>
+  </button>
 </template>
