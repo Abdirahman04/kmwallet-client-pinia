@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
-import { Account, Transaction, User } from "@/types/interfaces";
+import { Account, Transaction, User, UserData } from "@/types/interfaces";
 
 export const useUserStore = defineStore(
   "user",
@@ -31,6 +31,15 @@ export const useUserStore = defineStore(
       password.value = user.password;
       accounts.value = user.accounts;
       isSet.value = true;
+    }
+
+    function updateUser(user: UserData) {
+      customerId.value = user.customerId;
+      firstName.value = user.firstName;
+      lastName.value = user.lastName;
+      email.value = user.email;
+      phoneNumber.value = user.phoneNumber;
+      password.value = user.password;
     }
 
     function addAccount(account: Account) {
@@ -95,6 +104,7 @@ export const useUserStore = defineStore(
       addTransaction,
       amount,
       changeBalance,
+      updateUser,
     };
   },
   {
