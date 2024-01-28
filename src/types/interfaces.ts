@@ -44,3 +44,12 @@ export interface Validation {
   cpass1: boolean;
   cpass2: boolean;
 }
+
+export interface UserData {
+  customerId: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  password: string;
+}

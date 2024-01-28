@@ -4,6 +4,12 @@
     <div class="flex flex-grow flex-col bg-gray-200">
       <the-sub-nav path="home" text="Dashboard"></the-sub-nav>
       <h2 class="text-2xl">Welcome, {{ userStore.fullName }}</h2>
+      <button
+        @click="goToProfile"
+        class="bg-lime-600 border-2 border-lime-600 px-4 py-1 rounded-md text-white font-semibold hover:bg-transparent hover:text-lime-600 transition-colors duration-300 ease-in-out"
+      >
+        Profile
+      </button>
       <div
         v-for="account in userStore.accounts"
         :key="account.accountId"
@@ -33,5 +39,9 @@ const router = useRouter();
 function goToAccount(account: Account) {
   accountStore.setAccountStore(account);
   router.push({ name: "account" });
+}
+
+function goToProfile() {
+  router.push({ name: "profile" });
 }
 </script>

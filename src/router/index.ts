@@ -8,6 +8,7 @@ import AccountsViewVue from "@/views/AccountsView.vue";
 import DepositViewVue from "@/views/DepositView.vue";
 import WithdrawViewVue from "@/views/WithdrawView.vue";
 import TransferViewVue from "@/views/TransferView.vue";
+import ProfileViewVue from "@/views/ProfileView.vue";
 
 const routes: Array<RouteRecordRaw> = [
   { path: "/", name: "home", component: HomeView },
@@ -19,6 +20,7 @@ const routes: Array<RouteRecordRaw> = [
   { path: "/deposit", name: "deposit", component: DepositViewVue },
   { path: "/withdraw", name: "withdraw", component: WithdrawViewVue },
   { path: "/transfer", name: "transfer", component: TransferViewVue },
+  { path: "/profile", name: "profile", component: ProfileViewVue },
 ];
 
 const router = createRouter({
