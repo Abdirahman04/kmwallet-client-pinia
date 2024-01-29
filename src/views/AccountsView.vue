@@ -63,6 +63,12 @@
                   {{ user.amount(trans.balance) }}
                 </h2>
               </div>
+              <div
+                class="flex justify-center absolute bottom-2 left-[46%] bg-white rounded-xl px-2 border border-yellow-500"
+                @click="goToTransactions"
+              >
+                <button class="text-black font-mono">Show more</button>
+              </div>
             </div>
           </div>
         </div>
@@ -75,6 +81,7 @@
 import TheNavBar from "@/components/TheNavBar.vue";
 import TheSubNav from "@/components/TheSubNav.vue";
 import TransactionButton from "@/components/TransactionButton.vue";
+import router from "@/router";
 import { useAccountStore } from "@/stores/accountStore";
 import { useUserStore } from "@/stores/userStore";
 import { Transaction } from "@/types/interfaces";
@@ -95,5 +102,9 @@ function preview() {
     (trans: Transaction) => trans != null
   );
   transactions.push(...newArray.slice(0, 3));
+}
+
+function goToTransactions() {
+  router.push({ name: "transactions" });
 }
 </script>
