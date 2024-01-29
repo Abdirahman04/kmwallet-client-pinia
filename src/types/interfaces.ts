@@ -53,3 +53,13 @@ export interface UserData {
   phoneNumber: string;
   password: string;
 }
+
+export interface AddAccount {
+  isFormVisible: boolean;
+  sign: string;
+}
+
+export interface NewAccount {
+  customerId: string;
+  accountType: string;
+}

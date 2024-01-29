@@ -42,8 +42,13 @@ export const useUserStore = defineStore(
       password.value = user.password;
     }
 
-    function addAccount(account: Account) {
-      accounts.value.push(account);
+    function addAccount(newAccount: Account) {
+      accounts.value.push(newAccount);
+
+      for (const account of accounts.value) {
+        if (account.accountId == newAccount.accountId)
+          account.transactions = [];
+      }
     }
 
     function deleteAccount(accountId: string) {

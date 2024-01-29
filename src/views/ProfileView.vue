@@ -103,7 +103,6 @@ function updateUser() {
   fetch(url, options)
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       userStore.updateUser(data);
       router.go(0);
     })
@@ -115,8 +114,15 @@ function updateUser() {
 function deleteUser() {
   const id = userInfo.customerId;
 
+  const options = {
+    method: "delete",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
   const url = `http://127.0.0.1:9090/kmwallet/customer/${id}`;
-  fetch(url)
+  fetch(url, options)
     .then(() => {
       userStore.deleteUserStore();
       router.push({ name: "home" });
