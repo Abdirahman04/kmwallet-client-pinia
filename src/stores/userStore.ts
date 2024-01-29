@@ -29,7 +29,7 @@ export const useUserStore = defineStore(
       email.value = user.email;
       phoneNumber.value = user.phoneNumber;
       password.value = user.password;
-      accounts.value = user.accounts;
+      accounts.value = user.accounts ?? [];
       isSet.value = true;
     }
 
@@ -52,7 +52,9 @@ export const useUserStore = defineStore(
     }
 
     function deleteAccount(accountId: string) {
-      accounts.value.filter((acc) => acc.accountId != accountId);
+      accounts.value = accounts.value.filter(
+        (acc) => acc.accountId != accountId
+      );
     }
 
     function getTransactions(accountId: string) {

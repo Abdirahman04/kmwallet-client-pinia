@@ -112,24 +112,28 @@ function updateUser() {
     });
 }
 function deleteUser() {
-  const id = userInfo.customerId;
+  const ans = confirm("Are you sure you want to delete your account?");
 
-  const options = {
-    method: "delete",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
+  if (ans) {
+    const id = userInfo.customerId;
 
-  const url = `http://127.0.0.1:9090/kmwallet/customer/${id}`;
-  fetch(url, options)
-    .then(() => {
-      userStore.deleteUserStore();
-      router.push({ name: "home" });
-    })
-    .catch((error) => {
-      console.log(error);
-      alert("There was a problem in the account delete!");
-    });
+    const options = {
+      method: "delete",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    const url = `http://127.0.0.1:9090/kmwallet/customer/${id}`;
+    fetch(url, options)
+      .then(() => {
+        userStore.deleteUserStore();
+        router.push({ name: "home" });
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("There was a problem in the account delete!");
+      });
+  }
 }
 </script>

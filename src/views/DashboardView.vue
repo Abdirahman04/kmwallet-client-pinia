@@ -109,7 +109,7 @@ function addNewAccount() {
     .then((res) => res.json())
     .then((data) => {
       userStore.addAccount(data);
-      router.go(0);
+      changeFormVisibility();
     })
     .catch((error) => {
       console.log(error);
