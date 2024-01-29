@@ -127,7 +127,7 @@ function deleteAccount(id: string) {
         "Content-Type": "application/json",
       },
     };
-    const url = "http://127.0.0.1:9090/kmwallet/account";
+    const url = `http://127.0.0.1:9090/kmwallet/account/${id}`;
     fetch(url, options)
       .then(() => {
         userStore.deleteAccount(id);

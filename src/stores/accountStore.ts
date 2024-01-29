@@ -20,11 +20,13 @@ export const useAccountStore = defineStore(
     );
 
     function setAccountStore(account: Account) {
+      const defaultTransactions: Transaction[] = [];
+
       accountId.value = account.accountId;
       customerId.value = account.customerId;
       accountType.value = account.accountType;
       balance.value = account.balance;
-      transactions.value.push(...account.transactions);
+      transactions.value = account.transactions ?? defaultTransactions;
       isSet.value = true;
     }
 

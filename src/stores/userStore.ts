@@ -23,13 +23,15 @@ export const useUserStore = defineStore(
       }).format(balance);
 
     function setUserStore(user: User) {
+      const defaultAccounts: Account[] = [];
+
       customerId.value = user.customerId;
       firstName.value = user.firstName;
       lastName.value = user.lastName;
       email.value = user.email;
       phoneNumber.value = user.phoneNumber;
       password.value = user.password;
-      accounts.value = user.accounts ?? [];
+      accounts.value = user.accounts ?? defaultAccounts;
       isSet.value = true;
     }
 
