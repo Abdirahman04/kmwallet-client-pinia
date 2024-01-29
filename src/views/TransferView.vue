@@ -4,11 +4,17 @@
     <div class="flex flex-grow flex-col bg-green-100">
       <the-sub-nav path="account" text="Transfer"></the-sub-nav>
       <div class="flex flex-grow justify-center items-center">
-        <div>
+        <div class="flex flex-col bg-blue-300 px-4 py-4 rounded-md">
           <h1>How much do you want to transfer?</h1>
           <form-input v-model="balance"></form-input>
+          <h1>Recipient</h1>
           <form-input v-model="target"></form-input>
-          <button @click="send">Send</button>
+          <button
+            @click="send"
+            class="bg-black text-white rounded-sm mt-2 py-1"
+          >
+            Send
+          </button>
         </div>
       </div>
     </div>
