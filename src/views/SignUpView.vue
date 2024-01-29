@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col h-screen">
     <the-nav-bar></the-nav-bar>
-    <div class="flex flex-grow justify-center items-center bg-blue-500">
+    <div class="flex flex-grow justify-center items-center bg-slate-400">
       <div
         class="md:m-0 m-1 md:w-[40%] w-[98%] bg-white shadow-lg rounded-md p-5"
       >

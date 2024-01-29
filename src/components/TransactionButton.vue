@@ -6,10 +6,6 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  title: {
-    type: String,
-    required: true,
-  },
 });
 
 const router = useRouter();
@@ -24,6 +20,6 @@ function goToTransaction() {
     class="px-5 py-1 bg-black text-white rounded-md shadow-md border-2 border-black hover:bg-transparent hover:text-black"
     @click="goToTransaction"
   >
-    {{ props.title }}
+    <slot />
   </button>
 </template>
