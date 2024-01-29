@@ -4,10 +4,15 @@
     <div class="flex flex-grow flex-col bg-purple-100">
       <the-sub-nav path="account" text="Withdraw"></the-sub-nav>
       <div class="flex flex-grow justify-center items-center">
-        <div>
+        <div class="flex flex-col bg-blue-300 px-4 py-4 rounded-md">
           <h1>How much do you want to withdraw?</h1>
           <form-input v-model="balance"></form-input>
-          <button @click="withdraw">Withdraw</button>
+          <button
+            @click="withdraw"
+            class="bg-black text-white rounded-sm mt-2 py-1"
+          >
+            Withdraw
+          </button>
         </div>
       </div>
     </div>
