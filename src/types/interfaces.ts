@@ -63,3 +63,18 @@ export interface NewAccount {
   customerId: string;
   accountType: string;
 }
+
+export interface Community {
+  id: string;
+  message: string;
+  customerId: string;
+  timestamp: number[];
+}
+
+export interface ApiOptions {
+  method: string;
+  headers: {
+    "Content-Type": "application/json";
+  };
+  body: string;
+}

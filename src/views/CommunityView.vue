@@ -20,16 +20,21 @@
           </div>
         </div>
         <div
-          class="flex flex-col-reverse px-6 py-3 max-h-[78%] overflow-y-auto"
+          class="flex flex-grow flex-col-reverse px-6 py-3 max-h-[78%] overflow-y-auto"
         >
-          <h1>hello</h1>
-          <h1>hello</h1>
-          <h1>hello</h1>
-          <h1>hello</h1>
-          <h1>hello</h1>
-          <h1>hello</h1>
-          <h1>hello</h1>
-          <h1>hello</h1>
+          <div
+            class="bg-gray-600 text-white w-1/2 rounded-e-xl shadow-md mt-1 px-4 py-1"
+            v-for="msg in messages"
+            :key="msg.id"
+          >
+            <div class="tracking-wide text-red-400 font-semibold">
+              {{ msg.customerId }}
+            </div>
+            <div>{{ msg.message }}</div>
+            <h5 class="text-right text-sm text-amber-300">
+              {{ new Date(...msg.timestamp).toLocaleString() }}
+            </h5>
+          </div>
         </div>
         <div class="px-5 py-3 bg-gray-300 relative bottom-0">
           <div
@@ -38,8 +43,9 @@
             <input
               type="text"
               class="w-5/6 text-lg font-light font-serif px-2 focus:outline-none"
+              v-model="newMessage.message"
             />
-            <button>
+            <button @click="sendMessage">
               <i class="fa-solid fa-comment-dots text-2xl text-green-400"></i>
             </button>
           </div>
@@ -52,6 +58,61 @@
 <script setup lang="ts">
 import TheNavBar from "@/components/TheNavBar.vue";
 import { useUserStore } from "@/stores/userStore";
+import { Community, ApiOptions } from "@/types/interfaces";
+import { reactive, onMounted } from "vue";
 
 const user = useUserStore();
+
+const messages = reactive<Array<Community>>([]);
+const url = "http://127.0.0.1:9090/kmwallet/community";
+
+function getMessages() {
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      messages.push(...data);
+      messages.reverse();
+    })
+    .catch((err) => {
+      console.log("Error getting messages", err);
+    });
+}
+
+onMounted(() => {
+  getMessages();
+});
+
+interface NewMessage {
+  message: string;
+  timestamp: string;
+  customerId: string;
+}
+
+const newMessage = reactive<NewMessage>({
+  message: "",
+  timestamp: new Date().toISOString(),
+  customerId: user.customerId,
+});
+
+function sendMessage() {
+  const options: ApiOptions = {
+    method: "post",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newMessage),
+  };
+
+  if (newMessage.message !== "") {
+    fetch(url, options)
+      .then((res) => res.json())
+      .then((data) => {
+        messages.unshift(data);
+        newMessage.message = "";
+      })
+      .catch((err) => {
+        console.log("Error sending message", err);
+      });
+  }
+}
 </script>

@@ -7,7 +7,7 @@
         <div
           v-for="trans in transactions()"
           :key="trans.transactionId"
-          class="px-3 py-2 bg-slate-600 text-white rounded-md mt-2 w-1/2"
+          class="px-3 py-2 bg-slate-600 text-white rounded-md mt-1 w-1/2"
         >
           <h1>{{ trans.transactionId }}</h1>
           <div class="flex justify-between">
