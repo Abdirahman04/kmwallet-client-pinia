@@ -46,13 +46,13 @@
             </transaction-button>
           </div>
           <div
-            class="w-3/4 px-3 py-2 bg-blue-300 mt-2 rounded-md"
+            class="w-3/4 px-3 py-2 bg-gray-300 mt-2 rounded-md"
             v-if="accountStore.transactions.length > 0"
           >
             <h1 class="text-center text-lg font-mono font-bold">History</h1>
             <div class="border-b border-gray-500 mb-2"></div>
             <div
-              class="px-3 py-1 mt-0.5 bg-blue-900 text-white rounded-md"
+              class="px-3 py-1 mt-0.5 bg-gray-800 text-white rounded-md"
               v-for="trans in transactions"
               :key="trans.transactionId"
             >
@@ -64,10 +64,10 @@
                 </h2>
               </div>
               <div
-                class="flex justify-center absolute bottom-2 left-[46%] bg-white rounded-xl px-2 border border-yellow-500"
+                class="flex justify-center absolute bottom-2 left-[46%] text-black bg-white rounded-lg px-2 border-2 border-white"
                 @click="goToTransactions"
               >
-                <button class="text-black font-mono">Show more</button>
+                <h1 class="pointer-events-none">Show more</h1>
               </div>
             </div>
           </div>
