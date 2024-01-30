@@ -50,9 +50,9 @@ function deposit() {
     .then((res) => res.json())
     .then((data) => {
       userStore.addTransaction(accountStore.accountId, data);
+      userStore.changeBalance(accountStore.accountId, balance.value, "sum");
       accountStore.addTransaction(data);
       accountStore.transaction("plus", balance.value);
-      userStore.changeBalance(accountStore.accountId, balance.value, "sum");
       router.push({ name: "account" });
     })
     .catch((error) => {
